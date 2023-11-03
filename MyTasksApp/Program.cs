@@ -20,11 +20,8 @@ internal class Program
         var files = Directory.GetFiles(path, searchPattern);
 
         var tasksToWait = new List<Task>();
-        foreach (var f in files)
+        foreach (var f in files.Take(fileCount))
         {
-            if (--fileCount < 0)
-                break;
-
             // таска, в которой подсчитывается количество пробелов в файле
             var task = new Task(() =>
             {
